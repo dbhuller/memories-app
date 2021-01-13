@@ -1,0 +1,18 @@
+/**
+ * Reducer is function that returns state changed by action
+ *
+ */
+const reducer = (posts = [], action) => {
+  switch (action.type) {
+    case "FETCH_ALL":
+      return action.payload;
+
+    case "CREATE":
+      return posts;
+
+    default:
+      return posts;
+  }
+};
+
+export default reducer;
