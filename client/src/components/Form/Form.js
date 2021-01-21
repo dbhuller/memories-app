@@ -24,9 +24,19 @@ const Form = ({ currentId, setCurrentId }) => {
     } else {
       dispatch(createPost(postData));
     }
+    clear();
   };
 
-  const clear = () => {};
+  const clear = () => {
+    setCurrentId(null);
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
+  };
 
   const [postData, setPostData] = useState({
     creator: "",
@@ -45,7 +55,9 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">Create a new Memory</Typography>
+        <Typography variant="h6">
+          {currentId ? "Edit" : "Create"} a Memory
+        </Typography>
         <TextField
           name="creator"
           variant="outlined"
